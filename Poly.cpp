@@ -126,9 +126,17 @@ string printList(int coefficient, int exponent, int& counter) {
             polynomial += "x^" + to_string(exponent);
         }
 
+        else if(coefficient == -1 && (exponent < 0 || exponent > 1) ) {
+            polynomial += "-x^" + to_string(exponent);
+        }
+
         else if(coefficient == 1 && exponent == 1) {
             polynomial += "x";
         }
+
+        else if(exponent == 1 && cofficient == -1) {
+            polynomial += "-x";
+        } 
 
         else if( (coefficient < 0 || coefficient > 1)
                                 && 
@@ -137,9 +145,7 @@ string printList(int coefficient, int exponent, int& counter) {
             polynomial += to_string(coefficient) + "x^" + to_string(exponent);
         }
 
-        else if( (coefficient < 0 || coefficient > 1) 
-                                && 
-                (exponent == 0) ) {
+        else if(exponent == 0) {
 
             polynomial += to_string(coefficient);
         } 
@@ -152,7 +158,7 @@ string printList(int coefficient, int exponent, int& counter) {
         }
 
         else if(coefficient == 0){
-            polynomial += "";
+            polynomial += "0";
         }
     }
         
@@ -163,6 +169,10 @@ string printList(int coefficient, int exponent, int& counter) {
 
         else if(coefficient == 1 && exponent == 1) {
             polynomial += "+x";
+        }
+
+        else if(coefficient == -1 && (exponent < 0 || exponent > 1) ) {
+            polynomial += "-x^" + to_string(exponent);
         }
 
         else if( (coefficient < 0 || coefficient > 1)
@@ -176,9 +186,7 @@ string printList(int coefficient, int exponent, int& counter) {
                 polynomial += "+" + to_string(coefficient) + "x^" + to_string(exponent);
         }
 
-        else if( (coefficient < 0 || coefficient > 1) 
-                                && 
-                (exponent == 0) ) {
+        else if(exponent == 0) {
 
             if(coefficient < 0) 
                 polynomial += to_string(coefficient);
@@ -186,6 +194,10 @@ string printList(int coefficient, int exponent, int& counter) {
             else 
                 polynomial += "+" + to_string(coefficient);
             
+        }
+
+        else if(exponent == 1 && cofficient == -1) {
+            polynomial += "-x";
         } 
 
         else if( (coefficient < 0 || coefficient > 1) 
